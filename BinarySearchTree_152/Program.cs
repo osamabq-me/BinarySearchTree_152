@@ -41,7 +41,7 @@ namespace BinarySearchTree_152
         public void insert(string element) // insert a node in the binary search tree
         {
             Node tmp, parent = null, currentNode = null;
-            Search(element, ref parent, ref currentNode);//Check if the new data is alreday in the tree
+            search(element, ref parent, ref currentNode);//Check if the new data is alreday in the tree
             if (currentNode != null)
             {
                 Console.WriteLine("Duplicates are not allowed");
@@ -65,6 +65,43 @@ namespace BinarySearchTree_152
             }
 
         }
+        public void search(string element, ref Node parent, ref Node currentNode)
+        {
+
+
+            currentNode = ROOT;
+            parent = null;
+            while((currentNode != null) && (currentNode.info != element))
+            {
+                parent = currentNode;
+                if (string.Compare(element, currentNode.info) < 0)
+                {
+                    currentNode = currentNode.leftchild;
+                }
+                else
+                {
+                    currentNode = currentNode.rightchild;
+                }
+            }
+
+        }
+        public void inorder(Node ptr)
+        {
+            if (ROOT == null)
+            {
+                Console.WriteLine("Tree is empty");
+                return ;
+            }
+            if (ptr != null)
+            {
+                inorder(ptr.leftchild);
+                Console.Write(ptr.info + "  ");
+                inorder(ptr.rightchild);
+            }
+        }
+
+
+
 
     }
 

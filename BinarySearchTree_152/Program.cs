@@ -23,7 +23,7 @@ namespace BinarySearchTree_152
 
         }
     }
-    
+
     /* A node class consists from three things,
      * the informaiton,
      * refrence to the right child, 
@@ -49,18 +49,18 @@ namespace BinarySearchTree_152
             }
             else
             {
-                tmp = new Node(element,null,null);//creates a node
+                tmp = new Node(element, null, null);//creates a node
                 if (parent == null)//if tree is empty
                 {
                     ROOT = tmp;
                 }
                 else if (string.Compare(element, parent.info) < 0)
                 {
-                    parent.leftchild= tmp;
+                    parent.leftchild = tmp;
                 }
                 else
                 {
-                    parent.rightchild= tmp;
+                    parent.rightchild = tmp;
                 }
             }
 
@@ -71,7 +71,7 @@ namespace BinarySearchTree_152
 
             currentNode = ROOT;
             parent = null;
-            while((currentNode != null) && (currentNode.info != element))
+            while ((currentNode != null) && (currentNode.info != element))
             {
                 parent = currentNode;
                 if (string.Compare(element, currentNode.info) < 0)
@@ -90,7 +90,7 @@ namespace BinarySearchTree_152
             if (ROOT == null)
             {
                 Console.WriteLine("Tree is empty");
-                return ;
+                return;
             }
             if (ptr != null)
             {
@@ -121,7 +121,7 @@ namespace BinarySearchTree_152
             {
                 Console.Write("Tree is empty");
             }
-            if(ptr != null)
+            if (ptr != null)
             {
                 postorder(ptr.leftchild);
                 postorder(ptr.rightchild);
@@ -131,15 +131,61 @@ namespace BinarySearchTree_152
         }
 
 
-    }
 
 
-    class Program
-    {
         static void Main(string[] args)
         {
+            BinaryTree x = new BinaryTree();
+            while (true)
+            {
+                Console.WriteLine("\n\nMenu");
+                Console.WriteLine("1. Implement insert opraiton");
+                Console.WriteLine("2. preform inorder traversal");
+                Console.WriteLine("3. preform preoreder traversal");
+                Console.WriteLine("4. preform postorder traversal");
+                Console.WriteLine("5. Exit");
+                Console.WriteLine("\n Enter your choice (1 - 5) :");
+                char ch = Convert.ToChar(Console.ReadLine());
+                Console.WriteLine();
+                switch (ch)
+                {
+                    case '1':
+                        {
+                            Console.WriteLine("Enter a Word:");
+                            string word = Console.ReadLine();
+                            x.insert(word);
+                        }
+                        break;
+                    case '2':
+                        {
+                            x.inorder(x.ROOT);
+                        }
+                        break;
+                    case '3':
+                        {
+                            x.preorder(x.ROOT);
+                        }
+                        break;
+                    case '4':
+                        {
+                            x.postorder(x.ROOT);
+                        }
+                        break;
+                    case '5':
+                        {
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Invald option");
+                            break;
+                        }
 
+                }
+
+            }
 
         }
+
     }
 }
